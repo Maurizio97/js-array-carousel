@@ -72,45 +72,65 @@ itemClick.classList.add('active');
 
 
 
-//catturo il click
+//catturo il click per il next
 document.querySelector(".next").addEventListener("click",
 
     function(){
         clickControl++
-
+        //se la classe active è presente la elimino 
         if (clickControl){
             document.querySelector(".item.active").classList.remove('active');
             document.querySelector(".thumb.active").classList.remove('active');
             
         }
-        //
-        if (clickControl === 5){
+        // controllo sul click. arrivato all'ultima immagine torna indietro
+        if (clickControl == 5){
             clickControl = 0
         }
 
         //ad ogni click aggiungo la classe all'elemento successivo nell'array
-        let itemClick = document.getElementsByClassName("item")[clickControl].classList.add('active');
-        //itemClick.classList.add('active');
+        let itemClick = document.getElementsByClassName("item")[clickControl]
+        itemClick.classList.add('active');
 
         //thumbClick.classList.remove('active');
 
         //ad ogni click aggiungo la classe all'elemento successivo nell'array
-        let thumbClick = document.getElementsByClassName("thumb")[clickControl].classList.add('active');
-        //thumbClick.classList.add('active');
+        let thumbClick = document.getElementsByClassName("thumb")[clickControl]
+        thumbClick.classList.add('active');
+        console.log(clickControl);
     }
 
 );
 
-/* previous.addEventListener("click",
+//catturo il click per il previous
+
+document.querySelector(".previous").addEventListener("click",
 
     function(){
+        clickControl--
+        //se la classe active è presente la elimino 
+        if (clickControl || !clickControl){
+
+            document.querySelector(".item.active").classList.remove('active');
+            document.querySelector(".thumb.active").classList.remove('active');
+            
+        }
+        // controllo sul click. arrivato all'ultima immagine torna indietro
+        if (clickControl < 0){
+            clickControl = 4
+        }
+
         //ad ogni click aggiungo la classe all'elemento successivo nell'array
-        
-        let itemClick = document.getElementsByClassName("item")[--clickControl];
+        let itemClick = document.getElementsByClassName("item")[clickControl]
         itemClick.classList.add('active');
 
-        let itemClick = document.getElementsByClassName("thumb")[--clickControl];
-        itemClick.classList.add('active');
+        //thumbClick.classList.remove('active');
+
+        //ad ogni click aggiungo la classe all'elemento successivo nell'array
+        let thumbClick = document.getElementsByClassName("thumb")[clickControl]
+        thumbClick.classList.add('active');
+        console.log(clickControl);
     }
-
-); */
+    
+);
+console.log(clickControl);
