@@ -26,7 +26,10 @@ const text = [
 
 // elementi di pagina utili 
 const itemsCont = document.querySelector(".container-items");
-const thumdsCont = document.querySelector(".container-thumbs")
+const thumdsCont = document.querySelector(".container-thumbs");
+//const next = document.querySelector(".next");
+const previous = document.querySelector(".previous");
+
 let item = "";
 let thumbs = "";
 
@@ -54,5 +57,60 @@ for ( let i = 0; i < items.length; i++) {
 }
 
 itemsCont.innerHTML += item;
-thumdsCont.innerHTML += thumbs
+thumdsCont.innerHTML += thumbs;
 
+/* let itemClick = document.getElementsByClassName("item")[0];
+console.log(itemClick);
+itemClick.classList.add('active'); */
+
+let clickControl = 0
+
+let thumbClick = document.getElementsByClassName("thumb")[clickControl];
+thumbClick.classList.add('active');
+let itemClick = document.getElementsByClassName("item")[clickControl];
+itemClick.classList.add('active');
+
+
+
+//catturo il click
+document.querySelector(".next").addEventListener("click",
+
+    function(){
+        clickControl++
+
+        if (clickControl){
+            document.querySelector(".item.active").classList.remove('active');
+            document.querySelector(".thumb.active").classList.remove('active');
+            
+        }
+        //
+        if (clickControl === 5){
+            clickControl = 0
+        }
+
+        //ad ogni click aggiungo la classe all'elemento successivo nell'array
+        let itemClick = document.getElementsByClassName("item")[clickControl].classList.add('active');
+        //itemClick.classList.add('active');
+
+        //thumbClick.classList.remove('active');
+
+        //ad ogni click aggiungo la classe all'elemento successivo nell'array
+        let thumbClick = document.getElementsByClassName("thumb")[clickControl].classList.add('active');
+        //thumbClick.classList.add('active');
+    }
+
+);
+
+/* previous.addEventListener("click",
+
+    function(){
+        //ad ogni click aggiungo la classe all'elemento successivo nell'array
+        
+        let itemClick = document.getElementsByClassName("item")[--clickControl];
+        itemClick.classList.add('active');
+
+        let itemClick = document.getElementsByClassName("thumb")[--clickControl];
+        itemClick.classList.add('active');
+    }
+
+); */
