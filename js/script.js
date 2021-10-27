@@ -30,31 +30,29 @@ const thumdsCont = document.querySelector(".container-thumbs")
 let item = "";
 let thumbs = "";
 
-console.log(itemsCont);
 for ( let i = 0; i < items.length; i++) {
     item += `
-    <div class="itemmm">
-        <div class="item">
-            <img src="" alt="">
-        </div>
+    <div class="item">
+        <img src="${items[i]}" alt="${title[i]}">
+    
         <div class="text">
             <h2>
-
+                ${title[i]}
             </h2>
             <p>
-        
+                ${text[i]}
             </p>
         </div>
-    </div>
+    </div> 
     `;
 
     thumbs += `
     <div class="thumb">
-        <img src="" alt="">
+        <img src="${items[i]}" alt="${title[i]}">
     </div>
     `;
-    
 }
 
 itemsCont.innerHTML += item;
 thumdsCont.innerHTML += thumbs
+
