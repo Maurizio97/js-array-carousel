@@ -27,8 +27,8 @@ const text = [
 // elementi di pagina utili 
 const itemsCont = document.querySelector(".container-items");
 const thumdsCont = document.querySelector(".container-thumbs");
-//const next = document.querySelector(".next");
-const previous = document.querySelector(".previous");
+/* const next = document.querySelector(".next");
+const previous = document.querySelector(".previous") */
 
 let item = "";
 let thumbs = "";
@@ -57,11 +57,8 @@ for ( let i = 0; i < items.length; i++) {
 }
 
 itemsCont.innerHTML += item;
-thumdsCont.innerHTML += thumbs;
+thumdsCont.innerHTML += thumbs; 
 
-/* let itemClick = document.getElementsByClassName("item")[0];
-console.log(itemClick);
-itemClick.classList.add('active'); */
 
 let clickControl = 0
 
@@ -71,20 +68,20 @@ let itemClick = document.getElementsByClassName("item")[clickControl];
 itemClick.classList.add('active');
 
 
-
+const next = document.querySelector(".next");
+const previous = document.querySelector(".previous");
+console.log(next);
+console.log(previous);
 //catturo il click per il next
-document.querySelector(".next").addEventListener("click",
+next.addEventListener("click",
 
     function(){
         clickControl++
         //se la classe active è presente la elimino 
-        if (clickControl){
             document.querySelector(".item.active").classList.remove('active');
             document.querySelector(".thumb.active").classList.remove('active');
-            
-        }
         // controllo sul click. arrivato all'ultima immagine torna indietro
-        if (clickControl == 5){
+        if (clickControl == (items.length)){
             clickControl = 0
         }
 
@@ -104,20 +101,17 @@ document.querySelector(".next").addEventListener("click",
 
 //catturo il click per il previous
 
-document.querySelector(".previous").addEventListener("click",
+previous.addEventListener("click",
 
     function(){
         clickControl--
         //se la classe active è presente la elimino 
-        if (clickControl || !clickControl){
-
             document.querySelector(".item.active").classList.remove('active');
             document.querySelector(".thumb.active").classList.remove('active');
             
-        }
         // controllo sul click. arrivato all'ultima immagine torna indietro
         if (clickControl < 0){
-            clickControl = 4
+            clickControl = (items.length - 1)
         }
 
         //ad ogni click aggiungo la classe all'elemento successivo nell'array
